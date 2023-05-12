@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { fetchVideos } from "./action";
 import "../index.css";
+import { Link } from "react-router-dom";
 const Sidebar = () => {
   const dispatch = useDispatch();
   const genre = [
@@ -83,6 +84,7 @@ const Sidebar = () => {
               );
             }}
           >
+            <Link to = '/'>
             <h5>
               <img
                 src={val.img}
@@ -90,7 +92,8 @@ const Sidebar = () => {
                 style={{ height: "40px", width: "40px" }}
               />{" "}
               {val.content}
-            </h5>
+              </h5>
+              </Link>
           </div>
         );
       })}

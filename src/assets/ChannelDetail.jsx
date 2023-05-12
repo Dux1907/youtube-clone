@@ -27,11 +27,12 @@ const ChannelDetail = () => {
               <div className="row justify-content-center">
                 <div className="col-12 mb-3">
                   <img
-                    src={product3.meta.image.banner[4].url}
+                    src={product3.meta.image.banner[2].url}
                     style={{
                       height: "250px",
                       width: "82.5vw",
                     }}
+                                      alt = 'Not found'
                   />
                 </div>
 

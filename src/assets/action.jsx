@@ -14,7 +14,7 @@ const initialState = {
 
 export const fetchVideos = createAsyncThunk("fetchVideos", async (val) => {
   let x;
-  if (!val) x = "random";
+  if (!val) x = "trending";
   else x = val;
   const options = {
     method: "GET",

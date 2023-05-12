@@ -38,7 +38,7 @@ const VideoDetail = () => {
               <div className="row">
                 <div className="col-10">
                   <p> {product.title}</p>
-                  <h4>{product.channelTitle}</h4>
+                  <h5>{product.channelTitle}</h5>
                 </div>
                 <div className="col-2 text-end">
                   <p>
@@ -49,7 +49,7 @@ const VideoDetail = () => {
                   </p>
                 </div>
               </div>
-              <Comments/>
+              {/* <Comments/> */}
             </div>
             <div className="col-4">
             <RelatedVideo />

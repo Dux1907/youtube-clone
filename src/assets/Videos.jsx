@@ -3,15 +3,16 @@ import { VideoId } from "./pages";
 import { ChannelId } from "./pages";
 const Videos = () => {
   const list = useSelector((state) => state.videos.videos);
-  // console.log(list)
+   console.log(list)
   const component = (val, key) => {
-    console.log(val)
-    if (val.type === 'video') return <VideoId key={key} val={val} />;
+   // console.log(val)
+    if (val.type == 'video') return <VideoId key={key} val={val} />;
     else return <ChannelId key={key} val={val} />;
   };
   return (
     <>
-      {list && Object.keys(list).length > 0 ? (
+      {
+        list.data && Object.keys(list).length > 0 ? (
         list.data.map((val, key) => {
           return component(val, key);
         })
