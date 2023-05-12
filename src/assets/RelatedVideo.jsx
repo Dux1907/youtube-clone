@@ -4,16 +4,16 @@ import { Link } from "react-router-dom";
 const RelatedVideo = () => {
   const product2 = useSelector((state) => state.videos.relatedVideo);
 
-  const get = (a) => {
-    return new Date(a).toLocaleString(undefined, { timeZone: "Asia/Kolkata" });
-  };
+  // const get = (a) => {
+  //   return new Date(a).toLocaleString(undefined, { timeZone: "Asia/Kolkata" });
+  // };
   return (
     <>
       {product2 && Object.keys(product2).length > 0 ? (
-        product2.items.map((val, key) => {
+        product2.map((val, key) => {
           return (
             <div
-              className="col-4 my-3"
+              className="col-12 my-3"
               style={{
                 maxHeight: "200px",
                 overflow: "auto",
@@ -23,18 +23,17 @@ const RelatedVideo = () => {
               }}
               key={key}
             >
-              <Link to={`/video/${val.id.videoId}`}>
+              <Link to={`/video/${val.videoId}`}>
                 <div className="row">
                   <div className="col-3">
                     <img
-                      src={val.snippet.thumbnails.high.url}
+                      src={val.thumbnail[1].url}
                       className="img-fluid"
                     />
                   </div>
                   <div className="col-9">
-                    <p>{val.snippet.title}</p>
-                    <p>{val.snippet.title}</p>
-                    <p>{get(val.snippet.publishTime)}</p>
+                    <p>{val.title}</p>
+                    <p>{val.title}</p>
                   </div>
                 </div>
               </Link>

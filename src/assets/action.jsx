@@ -8,27 +8,32 @@ const initialState = {
   videos: [],
   videoDetail: [],
   relatedVideo: [],
+  Channel: [],
+  comments:[]
 };
 
 export const fetchVideos = createAsyncThunk("fetchVideos", async (val) => {
+  let x;
+  if (!val) x = "random";
+  else x = val;
   const options = {
+    method: "GET",
+    url: `https://youtube-v3-alternative.p.rapidapi.com/search`,
     params: {
-      regionCode: "IN",
-      maxResults: "50",
-      order: "date",
+      query: x,
+      geo: "IN",
+      lang: "en",
     },
     headers: {
       "X-RapidAPI-Key": "e653e9b8c9msh42c03caf4029c58p1f2ba3jsn8a318b0373fb",
-      "X-RapidAPI-Host": "youtube-v31.p.rapidapi.com",
+      "X-RapidAPI-Host": "youtube-v3-alternative.p.rapidapi.com",
     },
   };
 
   try {
-    const response = await axios.get(
-      `https://youtube-v31.p.rapidapi.com/${val}`,
-      options
-    );
-    //  console.log(response.data);
+    const response = await axios.request(options);
+    console.log(x);
+    //   console.log(response.data);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -38,24 +43,22 @@ export const fetchVideoDetail = createAsyncThunk(
   "fetchVideoDetail",
   async (val) => {
     const options = {
+      method: "GET",
+      url: `https://youtube-v3-alternative.p.rapidapi.com/video`,
       params: {
-        regionCode: "IN",
-        maxResults: "50",
-        order: "date",
-      },
+        id: val,
+        geo: "IN",},
+
       headers: {
         "X-RapidAPI-Key": "e653e9b8c9msh42c03caf4029c58p1f2ba3jsn8a318b0373fb",
-        "X-RapidAPI-Host": "youtube-v31.p.rapidapi.com",
+        "X-RapidAPI-Host": "youtube-v3-alternative.p.rapidapi.com",
       },
     };
 
     try {
-      const response = await axios.get(
-        `https://youtube-v31.p.rapidapi.com/${val}`,
-        options
-      );
-      //  console.log(response.data);
-      return response.data.items[0];
+      const response = await axios.request(options);
+    //  console.log(response.data);
+       return response.data;
     } catch (error) {
       console.error(error);
     }
@@ -65,28 +68,72 @@ export const fetchRelatedVideo = createAsyncThunk(
   "fetchRelatedVideo",
   async (val) => {
     const options = {
+      method: "GET",
+      url: `https://youtube-v3-alternative.p.rapidapi.com/related`,
       params: {
-        regionCode: "IN",
-        maxResults: "50",
-        order: "date",
+        id: val,
+        geo: 'IN',
+        lang: 'en'
       },
       headers: {
         "X-RapidAPI-Key": "e653e9b8c9msh42c03caf4029c58p1f2ba3jsn8a318b0373fb",
-        "X-RapidAPI-Host": "youtube-v31.p.rapidapi.com",
+        "X-RapidAPI-Host": "youtube-v3-alternative.p.rapidapi.com",
       },
     };
 
     try {
-      const response = await axios.get(
-        `https://youtube-v31.p.rapidapi.com/${val}`,
-        options
-      );
-      //  console.log(response.data);
+      const response = await axios.request(options);
+     //  console.log(response.data.data);
+      return response.data.data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+);
+export const fetchChannel = createAsyncThunk(
+  "fetchChannel",
+  async (val) => {
+    const options = {
+      method: "GET",
+      url: `https://youtube-v3-alternative.p.rapidapi.com/channel`,
+      params: {
+        id: val,geo: "IN",
+      },
+      headers: {
+        "X-RapidAPI-Key": "e653e9b8c9msh42c03caf4029c58p1f2ba3jsn8a318b0373fb",
+        "X-RapidAPI-Host": "youtube-v3-alternative.p.rapidapi.com",
+      },
+    };
+
+    try {
+      const response = await axios.request(options);
+       console.log(response.data);
       return response.data;
     } catch (error) {
       console.error(error);
     }
   }
+);
+export const fetchComments = createAsyncThunk("fetchComments", async (val) => {
+  const options = {
+    method: "GET",
+    url: `https://youtube-v3-alternative.p.rapidapi.com/comments`,
+    params: {
+     id:val,geo: "IN",
+    },
+    headers: {
+      "X-RapidAPI-Key": "e653e9b8c9msh42c03caf4029c58p1f2ba3jsn8a318b0373fb",
+      "X-RapidAPI-Host": "youtube-v3-alternative.p.rapidapi.com",
+    },
+  };
+  try {
+    const response = await axios.request(options);
+     console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
 );
 const videoSlice = createSlice({
   name: "videos",
@@ -113,6 +160,12 @@ const videoSlice = createSlice({
     [fetchRelatedVideo.fulfilled]: (state, { payload }) => {
       return { ...state, relatedVideo: payload };
     },
+    [fetchChannel.fulfilled]: (state, { payload } ) => {
+      return { ...state, Channel: payload,videos:payload.data };
+    },
+    [fetchComments.fulfilled]: (state, { payload }) => {
+      return { ...state, Comments: payload };
+    }
   },
 });
 

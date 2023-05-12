@@ -4,5 +4,3 @@ export { default as Videos } from "./Videos";
 
 export { default as VideoId } from "./VideoId";
 export { default as ChannelId } from "./ChannelId";
-
-export { default as BaseURL } from "./BaseURL";

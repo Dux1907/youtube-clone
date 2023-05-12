@@ -6,12 +6,12 @@ import { fetchVideos } from "./action";
 const Feed = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchVideos(`search?q=music&part=snippet%2Cid`));
+    dispatch(fetchVideos());
   }, [dispatch]);
   return (
     <div className="container-fluid">
       <div className="row">
-        <div className="col-md-2 col-12 overflow-auto gap-3 d-flex flex-md-column bg-dark text-white gap-md-1 text-center">
+        <div className="col-md-2 col-12 overflow-auto bg-dark text-white">
           <Sidebar />
         </div>
         <div className="col-md-10">

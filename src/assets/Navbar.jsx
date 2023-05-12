@@ -81,7 +81,7 @@ export default function SearchAppBar() {
             <Link to="/">
               <SearchIcon
                 onClick={() => {
-                  dispatch(fetchVideos(`search?q=${val}&part=snippet%2Cid`));
+                  dispatch(fetchVideos(val,'search'));
                   setVal("");
                 }}
               />

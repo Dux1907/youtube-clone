@@ -79,7 +79,7 @@ const Sidebar = () => {
             className="sidebar justify-content-center align-items-center border-bottom my-1"
             onClick={() => {
               dispatch(
-                fetchVideos(`search?q=${val.content}&part=snippet%2Cid`)
+                fetchVideos(val.content)
               );
             }}
           >
