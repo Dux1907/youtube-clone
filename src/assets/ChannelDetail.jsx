@@ -22,7 +22,6 @@ const ChannelDetail = () => {
             </div>
             <div
               className="col-10"
-              style={{ display: "inline-block !important" }}
             >
               <div className="row justify-content-center">
                 <div className="col-12 mb-3">

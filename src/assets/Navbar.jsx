@@ -78,7 +78,7 @@ export default function SearchAppBar() {
               value={val}
               onChange={(e) => setVal(e.target.value)}
             />
-            <Link to="/">
+            <Link to = {`/search/${val}`}>
               <SearchIcon
                 onClick={() => {
                   dispatch(fetchVideos(val));

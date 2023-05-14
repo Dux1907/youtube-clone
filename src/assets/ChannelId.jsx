@@ -1,6 +1,9 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const ChannelId = (val, key) => {
+  const state = useSelector(state => state)
+console.log(state)
   return (
     <div className="col-10">
       <Link to = {`/channel/${val.val.channelId}`}>
@@ -8,7 +11,7 @@ const ChannelId = (val, key) => {
       
         <div
           key={key}
-          className="col-4 d-flex justify-content-end align-content-center  my-5"
+          className="col-4 d-flex justify-content-end align-content-center my-5"
         >
           <img
             src={val.val.thumbnail[1].url}

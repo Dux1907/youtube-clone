@@ -7,6 +7,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import UploadIcon from '@mui/icons-material/Upload';
 import { fetchRelatedVideo } from "./action";
 import RelatedVideo from "./RelatedVideo";
+import Comments from "./Comments";
 // import { removeVideo } from "./action";
 const VideoDetail = () => {
   const { videoId } = useParams();
@@ -49,7 +50,7 @@ const VideoDetail = () => {
                   </p>
                 </div>
               </div>
-              {/* <Comments/> */}
+              <Comments/>
             </div>
             <div className="col-4">
             <RelatedVideo />
