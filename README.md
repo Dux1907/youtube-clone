@@ -1,4 +1,4 @@
-Title: <h3>YouTube Clone - Video Streaming Platform</h3>
+<h3>YouTube Clone - Video Streaming Platform</h3>
 
 Description:
 <ul>
