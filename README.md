@@ -1,6 +1,5 @@
 <h3>YouTube Clone - Video Streaming Platform</h3>
 
-Description:
 <ul>
   <li>
 Led the development of a YouTube clone, a comprehensive video streaming platform that closely emulates the features and functionalities of the original YouTube application.</li>
